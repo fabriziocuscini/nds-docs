@@ -12,10 +12,13 @@ const config: DocsThemeConfig = {
   logo: (
     <>
       {logoImage}
-      <span style={{ marginLeft: ".4em", fontWeight: 800 }}>NDS v2 Docs</span>
+      <span style={{ marginLeft: ".4em", fontWeight: 500 }}>NDS v2 Docs</span>
     </>
   ),
-  primaryHue: 285,
+  primaryHue: {
+    dark: 285,
+    light: 275,
+  },
   project: {
     link: "https://github.com/shuding/nextra-docs-template",
   },
