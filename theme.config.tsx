@@ -23,6 +23,10 @@ const config: DocsThemeConfig = {
     link: "https://github.com/shuding/nextra-docs-template",
   },
   docsRepositoryBase: "https://github.com/shuding/nextra-docs-template",
+  toc: {
+    float: true,
+    title: "On this page",
+  },
   footer: {
     text: "Neon Design System © Marex Technology 2023",
   },
