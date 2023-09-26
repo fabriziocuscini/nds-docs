@@ -19,6 +19,10 @@ const config: DocsThemeConfig = {
     dark: 285,
     light: 275,
   },
+  primarySaturation: {
+    dark: 63,
+    light: 53,
+  },
   project: {
     link: "https://github.com/shuding/nextra-docs-template",
   },
@@ -26,6 +30,9 @@ const config: DocsThemeConfig = {
   toc: {
     float: true,
     title: "On this page",
+  },
+  sidebar: {
+    defaultMenuCollapseLevel: 1,
   },
   footer: {
     text: "Neon Design System © Marex Technology 2023",
