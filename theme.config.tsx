@@ -12,7 +12,7 @@ const config: DocsThemeConfig = {
   logo: (
     <>
       {logoImage}
-      <span style={{ marginLeft: ".4em", fontWeight: 500 }}>NDS v2 Docs</span>
+      <span style={{ marginLeft: ".4em", fontWeight: 500 }}>Neon Design System</span>
     </>
   ),
   primaryHue: {
@@ -35,7 +35,7 @@ const config: DocsThemeConfig = {
     defaultMenuCollapseLevel: 1,
   },
   footer: {
-    text: "Neon Design System © Marex Technology 2023",
+    text: "Neon Design System is a React component library for building modern, performant, and responsive web applications. It's built and maintained by the dev and design folks at Marex Financial.",
   },
 };
 
