@@ -1,0 +1,39 @@
+import Image from 'next/image'
+import { Tabs } from 'nextra/components';
+
+# Close Button
+
+CloseButton is essentially a button with a close icon. It is used to trigger close functionality in components.
+
+## Import
+    
+```jsx
+import { CloseButton } from '@nds-ui'
+```
+
+## Usage
+
+**!! Live example here !!**
+
+```jsx
+<CloseButton />
+```
+
+### Button size
+
+Pass the `size` prop to adjust the size of the close button. Values can be `sm`, `md` or `lg`.
+
+**!! Live example here !!**
+
+```jsx
+<Stack direction='row' spacing={4}>
+    <CloseButton size='sm' />
+    <CloseButton size='md' />
+    <CloseButton size='lg' />
+</Stack>
+```
+## Props
+
+The CloseButton composes `Box` component.
+
+![Props table](/props-table.png)

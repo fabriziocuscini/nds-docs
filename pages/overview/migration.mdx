@@ -1,1 +1,175 @@
-# Migrating from NDS v1
+import { Callout, Tabs } from 'nextra/components';
+
+# Why upgrade?
+
+<Callout>
+  A successful design system requires continuous improvement and adaptation based on user needs and
+  technological advancements.
+</Callout>
+
+After 4 years of using MUI v4, since we firstly established our in-house Design System, it's now time to upgrade our frontend stack and leverage on the latest technology available: React v18, Nodejs v20, MUI v5, Emotion styling engine, and more.
+
+## Current limitations
+
+- Developer's experience has changed over time: consuming and updating NDS components has become slower and more time consuming.
+- Bespoke solutions leading to reduced reusability and lower consistency.
+- Growing technical debt. We currently rely on a legacy component library [MUI v4](https://v4.mui.com/).
+- Look and feel hasn't been updated in years.
+- Missing light mode support.
+
+## Benefits
+
+This upgrade brings huge benftis, but it also comes with a cost, as there are some important breaking changes, alongside new cool stuff.
+
+- **🚀 Better performance:** bundle size reduction and unstructured imports can be used when importing multiple components.
+- **💅 Easier and faster customisation** thanks to styled-components, the sx prop and new components.
+- **💎 New components** that have evolved from the lab: Pagination, Rating, Skeleton, Autocomplete, Toggle, advanced tables, MultiSelect, Dropzone buttons, and many more!
+- **📄 Better documentation**, including a Typescript tab for each component.
+
+Moreover, MUI v4 reached its end-of-life and is no longer supported by the MUI organisation &ndash; See more on https://mui.com/versions
+
+## New styling engine: Emotion
+
+MUI v4 used [JSS](https://cssinjs.org/) as its CSS library. In the new version, they transitioned to [Emotion](https://emotion.sh/docs/introduction) for several reasons:
+
+- The maintenance and development of their style engine solution were too time-consuming.
+- JSS had poor performance.
+- The syntax required to overwrite styling was too complex.
+- The majority of the React community has not chosen to support JSS.
+- A lot of developers already use `styled-components` to override MUI's styling.
+- Emotion is a CSS-in-JS library ideal for dynamic styling.
+
+### Replacing `makeStyles` with `sx`
+
+In v5, `makeStyles` is imported from `@mui/styles`, but this library depends on JSS as a styling solution. JSS is no longer included in the `@mui/material` library anymore but still is in `@mui/styles`, which isn't compatible with `React.StrictMode` or React 18.
+
+Removing the `makeStyles` helper is the biggest effort of the migration. It's now considered deprecated in the MUI API, and they plan to remove it in the next version. Therefore, we need to update all our components and pages to use the new styling engine.
+
+Below some basic exmaples that show the difference between the two styling engines. The 'Before' tab shows the approach using JSS with `makeStyles` and the 'After' tab using Emotion with the new `sx` prop.
+
+<Tabs items={['JSS', 'Emotion']}>
+  <Tabs.Tab>
+    ```jsx
+    const useStyles = makeStyles(() => ({
+        archiveButton: {
+            color: red,
+        },
+    }));
+
+    export const ButtonExample = () => {
+        const classes = useStyles();
+        return <Button className={classes.archiveButton}>;
+    };
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```jsx
+    export const ButtonExample = () => (
+        <Button sx={{ color: 'red' }}>
+    );
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+<Tabs items={['JSS', 'Emotion']}>
+    <Tabs.Tab>
+        ```jsx
+        const useStyles = makeStyles(() => ({
+            boxChangeColor: {
+                backgroundColor: ({ clicked }) =>
+                    clicked ? 'primary.dark' : 'secondary.light'
+                ),
+            },
+        }));
+
+        export default function ToogleBox() {
+            const [clicked, setClicked] = useState(false);
+
+            const handleClick = () => {
+                setClicked(click => !click)
+            };
+
+            return (
+                <>
+                    <Button onClick={handleClick}>Toogle</Button>
+                    <Box className={boxChangeColor} />
+                </>
+            );
+        }
+        ```
+    </Tabs.Tab>
+    <Tabs.Tab>
+        ```jsx
+        export default function ToogleBox() {
+        const [clicked, setClicked] = useState(false);
+
+        const handleClick = () => {
+            setClicked((click) => !click);
+        };
+
+        return (
+            <>
+            <Button onClick={handleClick}>Change</Button>
+            <Box
+                sx={{
+                bgcolor: clicked ? 'primary.dark' : 'secondary.light',
+                }}
+            />
+            </>
+        );
+        }
+        ```
+    </Tabs.Tab>
+</Tabs>
+
+### Using styles shortcut
+
+MUI System has new custom property shortcuts as part of a wider Style utilities package.
+
+```jsx
+<Slider sx={{ mb: 1 }} />
+// The line above is equivalent to
+<Slider sx={{ marginBottom: theme.spacing(1) }} />
+```
+
+Some more examples:
+
+- `mt` → `marginTop`
+- `mx` → `margin-left`, `margin-right`
+- `pb` → `paddingBottom`
+- `p` → `padding`
+
+You can find a full reference on [Properties - MUI System](https://mui.com/system/properties/).
+
+###  The new Stack component
+
+We also take advantage of the migration to use the new Stack component. This one is a blessing.
+
+In our codebase, we were using the `Grid` component extensively as a helper to implement CSS Flexbox, and it made the code verbose and hard to read, with a lot of repetition. In contrast, `Stack`, as a **directional stack**, makes the code more dry, readable and, accessible.
+
+**Example below:** two items aligned vertically.
+
+<Tabs items={['With Grid', 'With Stack']}>
+    <Tabs.Tab>
+        ```jsx
+        <Grid container direction="column" justifyContent="center" alignItems="center">
+            <Grid item>
+                <Box>Item One</Box>
+            </Grid>
+            <Grid item>
+                <Box>Item Two</Box>
+            </Grid>
+        </Grid>
+        ```
+    </Tabs.Tab>
+    <Tabs.Tab>
+        ```jsx
+        <Stack justifyContent="center" alignItems="center">
+            <Box>Hello</Box>
+            <Box>World</Box>
+        </Stack>
+        ```
+    </Tabs.Tab>
+</Tabs>
+
+In addition to `Stack`, there are also some exciting new components to make our life easier: `Skeleton`, `Autocomplete`, `Pagination` and the `loadingButton`.

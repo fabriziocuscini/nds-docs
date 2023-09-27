@@ -1,9 +1,9 @@
 {
   "index": "Welcome",
   "overview": "Overview",
-  "section-components": {
-    "type": "separator",
-    "title": "Components"
+  "components": {
+    "title": "Components",
+    "collapsed": true
   },
   "changelog": "Changelog",
   "about": {
