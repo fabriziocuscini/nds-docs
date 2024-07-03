@@ -1,11 +1,11 @@
 {
   "index": "Overview",
   "getting-started": "Getting started",
-  "components":  "Components",
+  "components": "Components",
   "how-to": "How-to guides",
   "integrations": "Integrations",
   "design-principles": "Design principles",
-  "design-patterns": "Design patterns",
+  "design-patterns": "UX patterns",
   "changelog": "Changelog",
   "about": {
     "title": "About",

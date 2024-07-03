@@ -1,9 +1,8 @@
 {
   "installation": "Installation",
   "usage": "Usage",
-  "projects": "Projects running NDS",
   "dependencies": "Dependencies",
-  "component-design": "Component design principles",
+  "projects": "NDS projects",
   "comparison": "Comparison with NDS v1",
   "faq": "FAQs"
 }
