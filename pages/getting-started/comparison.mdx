@@ -1,6 +1,8 @@
 import { Callout, Tabs } from 'nextra/components';
 
-# Why upgrade?
+# Comparison with NDS v1 and migration notes
+
+Content TBD (below just some migration notes written some time ago)
 
 <Callout>
   A successful design system requires continuous improvement and adaptation based on user needs and
@@ -61,6 +63,7 @@ Below some basic exmaples that show the difference between the two styling engin
         return <Button className={classes.archiveButton}>;
     };
     ```
+
   </Tabs.Tab>
   <Tabs.Tab>
     ```jsx
@@ -120,6 +123,7 @@ Below some basic exmaples that show the difference between the two styling engin
         }
         ```
     </Tabs.Tab>
+
 </Tabs>
 
 ### Using styles shortcut
@@ -141,7 +145,7 @@ Some more examples:
 
 You can find a full reference on [Properties - MUI System](https://mui.com/system/properties/).
 
-###  The new Stack component
+### The new Stack component
 
 We also take advantage of the migration to use the new Stack component. This one is a blessing.
 
@@ -150,26 +154,26 @@ In our codebase, we were using the `Grid` component extensively as a helper to i
 **Example below:** two items aligned vertically.
 
 <Tabs items={['With Grid', 'With Stack']}>
-    <Tabs.Tab>
-        ```jsx
-        <Grid container direction="column" justifyContent="center" alignItems="center">
-            <Grid item>
-                <Box>Item One</Box>
-            </Grid>
-            <Grid item>
-                <Box>Item Two</Box>
-            </Grid>
-        </Grid>
-        ```
-    </Tabs.Tab>
-    <Tabs.Tab>
-        ```jsx
-        <Stack justifyContent="center" alignItems="center">
-            <Box>Hello</Box>
-            <Box>World</Box>
-        </Stack>
-        ```
-    </Tabs.Tab>
+  <Tabs.Tab>
+    ```jsx
+    <Grid container direction='column' justifyContent='center' alignItems='center'>
+      <Grid item>
+        <Box>Item One</Box>
+      </Grid>
+      <Grid item>
+        <Box>Item Two</Box>
+      </Grid>
+    </Grid>
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```jsx
+    <Stack justifyContent='center' alignItems='center'>
+      <Box>Hello</Box>
+      <Box>World</Box>
+    </Stack>
+    ```
+  </Tabs.Tab>
 </Tabs>
 
 In addition to `Stack`, there are also some exciting new components to make our life easier: `Skeleton`, `Autocomplete`, `Pagination` and the `loadingButton`.

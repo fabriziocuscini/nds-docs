@@ -1,10 +1,10 @@
 {
-  "inputs": "Inputs",
+  "inputs": "Input and selection",
   "data-display": "Data display",
-  "feedback": "Feedback",
-  "layout": "Layout",
+  "feedback": "Feedback indicators",
+  "layout": "Layout and structure",
   "navigation": "Navigation",
   "surfaces": "Surfaces",
   "typography": "Typography",
-  "misc": "Misc"
+  "icons": "Icon library"
 }
